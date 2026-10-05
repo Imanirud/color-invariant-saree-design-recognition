@@ -1,0 +1,41 @@
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Environments & Virtual Envs
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# DeepLure Assessment Proprietary Data (Strict Non-Redistribution Compliance)
+data/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.bmp
+*.tiff
+*.zip
+*.tar.gz
+*.tgz
+
+# Model Checkpoints & Large Artifacts
+*.pth
+*.pt
+*.onnx
+output/
+checkpoints/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
