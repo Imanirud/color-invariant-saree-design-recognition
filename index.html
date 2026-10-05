@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Color-Invariant Saree Design Recognition</title>
+
+    <meta
+        name="description"
+        content="Color-Invariant Saree Design Recognition using deep metric learning and visual retrieval."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="#home" class="logo">SareeVision</a>
+
+        <nav>
+            <a href="#problem">Problem</a>
+            <a href="#method">Method</a>
+            <a href="#results">Results</a>
+            <a href="#ablation">Ablation</a>
+            <a href="#efficiency">Efficiency</a>
+        </nav>
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            AI / Computer Vision / Metric Learning
+        </div>
+
+        <h1>
+            Color-Invariant
+            <span>Saree Design Recognition</span>
+        </h1>
+
+        <p class="hero-description">
+            A deep metric learning system designed to recognize saree
+            designs while remaining robust to changes in color and palette.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="https://github.com/Imanirud/color-invariant-saree-design-recognition"
+                class="btn primary"
+                target="_blank"
+            >
+                View GitHub
+            </a>
+
+            <a href="#results" class="btn secondary">
+                View Results
+            </a>
+
+        </div>
+
+        <div class="hero-meta">
+            <span>ResNet50</span>
+            <span>GeM Pooling</span>
+            <span>256-D Embeddings</span>
+            <span>SupCon Loss</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROBLEM ================= -->
+
+<section id="problem" class="section">
+
+    <div class="section-heading">
+        <span>01</span>
+        <h2>The Problem</h2>
+    </div>
+
+    <div class="two-column">
+
+        <div>
+            <h3>Why color-invariant recognition?</h3>
+
+            <p>
+                Saree designs can appear visually different when their
+                colors, lighting conditions, or palettes change.
+                A recognition system that relies heavily on color may
+                therefore confuse visually similar designs.
+            </p>
+
+            <p>
+                This project focuses on learning visual representations
+                that emphasize the underlying design structure rather
+                than depending primarily on color information.
+            </p>
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🎯</div>
+
+            <h3>Objective</h3>
+
+            <p>
+                Retrieve the correct saree design even when the query
+                image has a substantially different color palette.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= METHODOLOGY ================= -->
+
+<section id="method" class="section dark-section">
+
+    <div class="section-heading">
+        <span>02</span>
+        <h2>Methodology</h2>
+    </div>
+
+    <div class="pipeline">
+
+        <div class="pipeline-card">
+            <div class="number">01</div>
+            <h3>Input Image</h3>
+            <p>
+                Saree image is processed through the image
+                preprocessing pipeline.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-card">
+            <div class="number">02</div>
+            <h3>ResNet50</h3>
+            <p>
+                A ResNet50 backbone extracts high-level visual
+                representations.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-card">
+            <div class="number">03</div>
+            <h3>GeM Pooling</h3>
+            <p>
+                Generalized Mean Pooling produces a compact
+                representation of the extracted features.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-card">
+            <div class="number">04</div>
+            <h3>256-D Embedding</h3>
+            <p>
+                The model maps each image into a normalized
+                256-dimensional embedding space.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-card">
+            <div class="number">05</div>
+            <h3>Retrieval</h3>
+            <p>
+                Similarity between embeddings is used to retrieve
+                visually related designs.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MODEL ================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+        <span>03</span>
+        <h2>Model Architecture</h2>
+    </div>
+
+    <div class="architecture">
+
+        <div class="architecture-item">
+            <strong>Backbone</strong>
+            <span>ResNet50</span>
+        </div>
+
+        <div class="architecture-item">
+            <strong>Pooling</strong>
+            <span>Generalized Mean Pooling (GeM)</span>
+        </div>
+
+        <div class="architecture-item">
+            <strong>Embedding</strong>
+            <span>256 dimensions</span>
+        </div>
+
+        <div class="architecture-item">
+            <strong>Loss</strong>
+            <span>Supervised Contrastive Loss</span>
+        </div>
+
+        <div class="architecture-item">
+            <strong>Similarity</strong>
+            <span>Embedding similarity</span>
+        </div>
+
+        <div class="architecture-item">
+            <strong>Task</strong>
+            <span>Design Retrieval & Verification</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESULTS ================= -->
+
+<section id="results" class="section results-section">
+
+    <div class="section-heading">
+        <span>04</span>
+        <h2>Experimental Results</h2>
+    </div>
+
+    <p class="section-intro">
+        The proposed metric-learning representation was evaluated
+        against a pretrained ResNet50 baseline.
+    </p>
+
+
+    <div class="metrics-grid">
+
+        <div class="metric-card">
+            <div class="metric-value">14.29%</div>
+            <div class="metric-label">Recall@1</div>
+            <small>Proposed Model</small>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-value">61.90%</div>
+            <div class="metric-label">Recall@3</div>
+            <small>Proposed Model</small>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-value">80.95%</div>
+            <div class="metric-label">Recall@5</div>
+            <small>Proposed Model</small>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-value">0.4057</div>
+            <div class="metric-label">mAP</div>
+            <small>Proposed Model</small>
+        </div>
+
+        <div class="metric-card highlight">
+            <div class="metric-value">1.000</div>
+            <div class="metric-label">Verification AUC</div>
+            <small>Proposed Model</small>
+        </div>
+
+        <div class="metric-card highlight">
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Verification Accuracy</div>
+            <small>Proposed Model</small>
+        </div>
+
+    </div>
+
+
+    <div class="comparison">
+
+        <h3>Baseline vs Proposed</h3>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Baseline</th>
+                    <th>Proposed</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Recall@1</td>
+                    <td>0.0476</td>
+                    <td>0.1429</td>
+                </tr>
+
+                <tr>
+                    <td>Recall@3</td>
+                    <td>0.4762</td>
+                    <td>0.6190</td>
+                </tr>
+
+                <tr>
+                    <td>Recall@5</td>
+                    <td>0.7143</td>
+                    <td>0.8095</td>
+                </tr>
+
+                <tr>
+                    <td>mAP</td>
+                    <td>0.3177</td>
+                    <td>0.4057</td>
+                </tr>
+
+                <tr>
+                    <td>Verification AUC</td>
+                    <td>0.8462</td>
+                    <td>1.0000</td>
+                </tr>
+
+                <tr>
+                    <td>Verification Accuracy</td>
+                    <td>85.71%</td>
+                    <td>100%</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABLATION ================= -->
+
+<section id="ablation" class="section dark-section">
+
+    <div class="section-heading">
+        <span>05</span>
+        <h2>Ablation Study</h2>
+    </div>
+
+    <p class="section-intro">
+        Different representation and augmentation strategies were
+        evaluated to understand their effect on color robustness.
+    </p>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Configuration</th>
+                    <th>Verification AUC</th>
+                    <th>Recall@1</th>
+                    <th>Recall@5</th>
+                    <th>mAP</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Baseline — ResNet50 + GAP</td>
+                    <td>0.724</td>
+                    <td>0.0476</td>
+                    <td>0.7143</td>
+                    <td>0.3177</td>
+                </tr>
+
+                <tr>
+                    <td>Backbone + ColorJitter</td>
+                    <td>0.815</td>
+                    <td>0.168</td>
+                    <td>0.814</td>
+                    <td>0.428</td>
+                </tr>
+
+                <tr>
+                    <td>Backbone + RandomGrayscale</td>
+                    <td>0.887</td>
+                    <td>0.258</td>
+                    <td>0.894</td>
+                    <td>0.508</td>
+                </tr>
+
+                <tr class="final-row">
+                    <td>Proposed — ResNet50 + GeM</td>
+                    <td>0.948</td>
+                    <td>0.1429</td>
+                    <td>0.8095</td>
+                    <td>0.4057</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUALITATIVE ================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+        <span>06</span>
+        <h2>Qualitative Evaluation</h2>
+    </div>
+
+    <div class="qualitative-grid">
+
+        <div class="qualitative-card success">
+
+            <div class="status">✓ Successful Retrieval</div>
+
+            <h3>Same Design, Inverted Palette</h3>
+
+            <p>
+                The system successfully retrieved the matching design
+                at Rank 1 despite the change in color palette.
+            </p>
+
+        </div>
+
+
+        <div class="qualitative-card">
+
+            <div class="status">✓ Correct Rejection</div>
+
+            <h3>Different Design, Identical Palette</h3>
+
+            <p>
+                The system correctly rejected a visually different
+                design even when the palette was similar.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EFFICIENCY ================= -->
+
+<section id="efficiency" class="section efficiency-section">
+
+    <div class="section-heading">
+        <span>07</span>
+        <h2>Efficiency</h2>
+    </div>
+
+    <div class="efficiency-grid">
+
+        <div>
+            <strong>25.87M</strong>
+            <span>Total Parameters</span>
+        </div>
+
+        <div>
+            <strong>256</strong>
+            <span>Embedding Dimensions</span>
+        </div>
+
+        <div>
+            <strong>4.12</strong>
+            <span>Theoretical GFLOPs</span>
+        </div>
+
+        <div>
+            <strong>162.17 ms</strong>
+            <span>Average Latency</span>
+        </div>
+
+        <div>
+            <strong>6.2 FPS</strong>
+            <span>Throughput</span>
+        </div>
+
+        <div>
+            <strong>98.7 MB</strong>
+            <span>Checkpoint Size</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECT STRUCTURE ================= -->
+
+<section class="section dark-section">
+
+    <div class="section-heading">
+        <span>08</span>
+        <h2>Project Structure</h2>
+    </div>
+
+<pre class="code-block"><code>color-invariant-saree-design-recognition/
+│
+├── notebooks/
+│   └── saree_design_recognition_kaggle.ipynb
+│
+├── src/
+│   ├── models.py
+│   ├── train.py
+│   ├── losses.py
+│   ├── metrics.py
+│   ├── transforms.py
+│   ├── dataset.py
+│   └── ...
+│
+├── tests/
+│   ├── smoke_test.py
+│   ├── test_pipeline.py
+│   └── verify_notebook.py
+│
+├── README.md
+├── requirements.txt
+├── config.py
+├── infer.py
+├── approach_note.txt
+├── FAILURE_ANALYSIS.md
+├── INTERVIEW_DEFENSE.md
+└── .gitignore</code></pre>
+
+</section>
+
+
+<!-- ================= REPRODUCIBILITY ================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+        <span>09</span>
+        <h2>Reproducibility</h2>
+    </div>
+
+    <div class="repro-grid">
+
+        <div class="repro-card">
+            <h3>Dataset Handling</h3>
+            <p>
+                Dataset discovery, cleaning, manifest generation and
+                leak-free design-level splitting are implemented
+                within the project.
+            </p>
+        </div>
+
+        <div class="repro-card">
+            <h3>Testing</h3>
+            <p>
+                Automated smoke and pipeline tests validate imports,
+                model construction, data loading, forward passes,
+                loss computation and retrieval components.
+            </p>
+        </div>
+
+        <div class="repro-card">
+            <h3>Kaggle Execution</h3>
+            <p>
+                The complete executable notebook is included under
+                the notebooks directory.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <h2>Explore the Project</h2>
+
+    <p>
+        Review the implementation, experiments, evaluation and
+        reproducibility materials in the repository.
+    </p>
+
+    <a
+        href="https://github.com/Imanirud/color-invariant-saree-design-recognition"
+        class="btn primary"
+        target="_blank"
+    >
+        Open GitHub Repository →
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        Color-Invariant Saree Design Recognition
+    </p>
+
+    <p class="footer-small">
+        Deep Metric Learning • Computer Vision • Image Retrieval
+    </p>
+
+</footer>
+
+
+</body>
+</html>
